@@ -24,6 +24,12 @@ pages << {
         page_type: 'taxonomy',
         page_category: 'Energidrikk',
         search_term: '-'
+    },
+    'http2' => true,
+    "driver": { 
+        "name": "scraping energy",
+        "stealth": true,
+        "enbable_images": false,
     }
 }
 
@@ -51,6 +57,12 @@ search_terms.each do |search_term|
             page_type: 'search',
             page_category: '-',
             search_term: search_term
+        },
+        'http2' => true,
+        "driver": { 
+            "name": "scraping energy",
+            "stealth": true,
+            "enbable_images": false,
         }
     }
 end

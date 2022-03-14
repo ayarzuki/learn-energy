@@ -7,13 +7,13 @@ if page['vars']['page_type'] == "search"
             pages << {
                 page_type: 'listings',
                 no_url_encode: true,
-                url: "https://platform-rest-prod.ngdata.no/api/episearch/1210/products?search=#{search_term.gsub(" ","%20")}&page_size=20&suggest=true&page=1&types=suggest,products,articles,recipes,stores&store_id=7080001097950&popularity=true&sort=&facet=;;;;;;&full_response=true&showNotForSale=true",
+                url: "https://platform-rest-prod.ngdata.no/api/episearch/1210/products?search=#{search_term}&page_size=20&suggest=true&page=1&types=suggest,products,articles,recipes,stores&store_id=7080001097950&popularity=true&sort=&facet=;;;;;;&full_response=true&showNotForSale=true",
                 headers: {
                     'Host' => 'platform-rest-prod.ngdata.no',
                     'User-Agent' => 'Mozilla/5.0 (X11; Linux x86_64; rv:98.0) Gecko/20100101 Firefox/98.0',
                     'Accept' => '*/*',
                     'Referer' => "https://spar.no/sok?query=#{search_term.gsub(' ', '+').downcase}&expanded=products",
-                    'content-type' => 'application/json',
+                    'content-type' => 'application/json; charset=utf-8',
                     'fwc-browser-name' => 'Firefox',
                     'fwc-browser-platform' => 'Linux x86_64',
                     'fwc-browser-version' => '98.0',
@@ -24,12 +24,17 @@ if page['vars']['page_type'] == "search"
                     'fwc-using-csrf-token' => 'true',
                     'x-csrf-token' => csrf_token,
                 },
-                # http2: true,
                 vars: {
                     page_number: 1,
                     page_type: 'search',
                     page_category: '-',
                     search_term: search_term
+                },
+                'http2' => true,
+                "driver": { 
+                    "name": "scraping energy",
+                    "stealth": true,
+                    "enbable_images": false,
                 }
             }
         end
@@ -56,12 +61,17 @@ else
             'fwc-using-csrf-token' => 'true',
             'x-csrf-token' => csrf_token,
         },
-        # http2: true,
         vars: {
             page_number: 1,
             page_type: 'taxonomy',
             page_category: 'Energidrikk',
             search_term: '-'
+        },
+        'http2' => true,
+        "driver": { 
+            "name": "scraping energy",
+            "stealth": true,
+            "enbable_images": false,
         }
     }
 end
