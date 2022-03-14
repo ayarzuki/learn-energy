@@ -3,6 +3,12 @@ seeder:
   disabled: true
 
 parsers:
+  - page_type: cookie_list
+    file: "./parsers/cookie_list.rb"
+    disabled: true
   - page_type: listings
     file: "./parsers/listings.rb"
+    disabled: true
+  - page_type: product
+    file: "./parsers/product.rb"
     disabled: true
