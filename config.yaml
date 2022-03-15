@@ -1,7 +1,7 @@
 ---
 seeder:
   file: "./seeder/seeder.rb"
-  disabled: false
+  disabled: true
 parsers:
 - page_type: listings
   file: "./parsers/listings.rb"
@@ -14,7 +14,7 @@ parsers:
   disabled: false
 - page_type: cookie
   file: "./parsers/cookie.rb"
-  disabled: false
+  disabled: true
 exporters:
 - file: "./exporters/products_csv.yaml"
   disabled: false
