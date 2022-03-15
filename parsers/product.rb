@@ -2,11 +2,11 @@ vars = page['vars']
 # p vars
 
 parser_page = Nokogiri.HTML(content)
-p parser_page
+# p parser_page
 
-# title = parser_page.at('h1').text.gsub(/(\n\r|\n|\r|\t|\s|<.*>)+/, ' ').strip
-# title = "#{title} #{parser_page.at('.cw-product__variant').text.gsub(/(\n\r|\n|\r|\t|\s)+/, ' ').strip}" rescue title
-# p title
+title = parser_page.at('h1').gsub(/(\n\r|\n|\r|\t|\s|<.*>)+/, ' ').strip
+title = "#{title} #{parser_page.at('.cw-product__variant').text.gsub(/(\n\r|\n|\r|\t|\s)+/, ' ').strip}" rescue title
+p title
 
 # id = page['url'].scan(/(\d+)\?/).first.first
 # promotion_text = parser_page.at('.cw-product__over .cw-product__promotion').text.strip rescue ''

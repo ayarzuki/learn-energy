@@ -1,14 +1,35 @@
+---
 seeder:
   file: "./seeder/seeder.rb"
-  disabled: true
-
+  disabled: false
 parsers:
-  - page_type: cookie_list
-    file: "./parsers/cookie_list.rb"
-    disabled: true
-  - page_type: listings
-    file: "./parsers/listings.rb"
-    disabled: true
-  - page_type: product
-    file: "./parsers/product.rb"
-    disabled: true
+- page_type: listings
+  file: "./parsers/listings.rb"
+  disabled: false
+- page_type: product
+  file: "./parsers/product.rb"
+  disabled: false
+- page_type: search
+  file: "./parsers/search.rb"
+  disabled: false
+- page_type: cookie
+  file: "./parsers/cookie.rb"
+  disabled: false
+exporters:
+- file: "./exporters/products_csv.yaml"
+  disabled: false
+- exporter_name: products_json
+  exporter_type: json
+  collection: products
+  write_mode: pretty_array
+  start_on_job_done: true
+parse_failed_pages: true
+finisher:
+  file: "./finisher/finisher.rb"
+input_vars:
+- name: csrf_token
+  title: CSFR token
+  description: Token that is needed to get pages correctly using API
+  type: text
+  required: true
+  disabled: false

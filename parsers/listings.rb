@@ -2,13 +2,14 @@ vars = page["vars"]
 # p vars
 
 # data = page['vars']['page_type'] == 'search' ? JSON.parse(content)["products"] : JSON.parse(content)
-data = Nokogiri.HTML(content)
+data = JSON.parse(content)
 # p data
 
-total = page['vars']['page_type'] == 'search' ?  data["hits"]["total"] : data['hits']['allHits']
+# total = page['vars']['page_type'] == 'search' ?  data["hits"]["total"] : data['hits']['allHits']
+total = data["hits"]["total"]
 p total
 # products = data["hits"]["hits"]
-# total_per_page = vars["page_type"] == "search" ? 20 : 40
+# total_per_page = vars["page_type"] == "search" ? 20
 
 # if (vars["page_number"] == 1) && (total.to_i > total_per_page)
 #   total_pages = (total.to_f / total_per_page).ceil.to_i
@@ -36,12 +37,12 @@ p total
 #         page_category: vars["page_category"],
 #         search_term: vars["search_term"],
 #       },
-        # 'http2' => true,
-        # "driver": { 
-        #   "name": "scraping energy",
-        #   "stealth": true,
-        #   "enbable_images": false,
-        # }
+#         # 'http2' => true,
+#         "driver": { 
+#           "name": "scraping energy",
+#           "stealth": true,
+#           "enbable_images": false,
+#         }
 #     }
 #   end
 # end
@@ -66,11 +67,11 @@ p total
 #       total_pg1: total_pg1,
 #       rank: (i + 1),
 #     },
-      # 'http2' => true,
-      # "driver": { 
-      #   "name": "scraping energy",
-      #   "stealth": true,
-      #   "enbable_images": false,
-      # }
+#       # 'http2' => true,
+#       "driver": { 
+#         "name": "scraping energy",
+#         "stealth": true,
+#         "enbable_images": false,
+#       }
 #   }
 # end
